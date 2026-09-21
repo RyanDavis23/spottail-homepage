@@ -91,7 +91,7 @@ p{margin:0}
 }
 .btn:hover{transform:translateY(-2px)}
 .btn:active{transform:translateY(0)}
-.btn-primary{background:var(--brand);color:#04263B;box-shadow:0 6px 20px rgba(77,175,226,.34)}
+.btn-primary{background:var(--brand);color:#032033;box-shadow:0 6px 20px rgba(77,175,226,.34)}
 .btn-primary:hover{background:var(--brand-lift);box-shadow:0 12px 30px rgba(77,175,226,.44)}
 .btn-ghost{border-color:var(--line-dark);color:#fff;background:rgba(255,255,255,.04)}
 .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.26)}
@@ -124,16 +124,16 @@ p{margin:0}
 .brand-txt{font-family:var(--f-display);font-weight:700;font-size:1.26rem;color:#fff;letter-spacing:-.03em}
 .brand-txt span{color:var(--brand)}
 .nav-links{display:flex;align-items:center;gap:30px;margin-left:auto}
-.nav-links a{
+.nav-links a:not(.btn){
   font-size:.925rem;font-weight:500;color:#C3CEE4;position:relative;padding:6px 0;transition:color .18s;
 }
-.nav-links a::after{
+.nav-links a:not(.btn)::after{
   content:"";position:absolute;left:0;right:100%;bottom:0;height:1.5px;background:var(--brand);
   transition:right .25s cubic-bezier(.2,.7,.3,1);
 }
-.nav-links a:hover{color:#fff}
-.nav-links a:hover::after{right:0}
-.nav .btn{padding:10px 20px;font-size:.9rem}
+.nav-links a:not(.btn):hover{color:#fff}
+.nav-links a:not(.btn):hover::after{right:0}
+.nav .btn{padding:10px 21px;font-size:.9rem;font-weight:700;letter-spacing:-.005em}
 .nav-toggle{display:none;background:none;border:0;padding:8px;cursor:pointer;margin-left:auto}
 .nav-toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
 .nav-toggle span+span{margin-top:5px}
@@ -474,12 +474,12 @@ p{margin:0}
 }
 @media (max-width:760px){
   .nav-links{
-    display:none;position:absolute;top:78px;left:0;right:0;background:rgba(7,12,30,.97);
-    backdrop-filter:blur(16px);flex-direction:column;align-items:stretch;gap:0;padding:12px 24px 22px;
+    display:none;position:absolute;top:78px;left:0;right:0;background:var(--ink);
+    flex-direction:column;align-items:stretch;gap:0;padding:12px 24px 22px;
     border-bottom:1px solid var(--line-dark);
   }
   .nav-links.open{display:flex}
-  .nav-links a{padding:13px 0;border-bottom:1px solid var(--line-dark)}
+  .nav-links a:not(.btn){padding:13px 0;border-bottom:1px solid var(--line-dark)}
   .nav-links .btn{margin-top:14px;width:100%}
   .nav-toggle{display:block}
   .nav{background:rgba(7,12,30,.82);backdrop-filter:blur(16px)}
