@@ -3,7 +3,7 @@
 A rebuilt homepage for [spottaildigital.com](https://spottaildigital.com), built as a
 single self-contained static page.
 
-**Live preview:** _(GitHub Pages URL goes here once published)_
+**Live preview:** <https://ryandavis23.github.io/spottail-homepage/>
 
 If you're Dave and you want to extend this, start with **[PROMPT_FOR_DAVE.md](PROMPT_FOR_DAVE.md)** —
 it has a copy-paste prompt for building the rest of the site in this same style.
