@@ -1,130 +1,160 @@
-# Rebuilding spottaildigital.com with Claude
+# Rebuilding the Spottail site with Claude — start here
 
-Dave — this repo contains a rebuilt **homepage** for Spottail Digital. It's a single
-self-contained `index.html` file, so there's no build step, no framework, and nothing
-to install to work on it.
+Dave — this is everything you need, in order. No coding required, and no terminal.
+Budget about 15 minutes for setup, then you can iterate on the site for as long as you like.
 
-Below is everything you need to (1) get Claude running on your machine, (2) point it at
-this homepage, and (3) have it build the rest of the site in the same style.
+**The live rebuilt homepage:** <https://ryandavis23.github.io/spottail-homepage/>
 
 ---
 
-## Step 1 — Get set up (about 5 minutes)
+## Part 1 — Get Claude on your computer (5 minutes)
 
-You have two options:
+You need the **Claude desktop app**, not the website. The website can write code but can't
+save files onto your machine — the desktop app can, and that's the whole trick.
 
-**Option A — Claude Code (recommended).** This is the one that can actually edit files
-and see the result. Install it, then in a terminal:
+1. Go to **<https://claude.ai/download>** and download the Mac or Windows app.
+2. Install it and sign in. You'll need a **Claude Pro or Max** subscription for this kind
+   of work — the free tier will run out partway through a website.
+3. Open the app. In the left sidebar, look for the **Code** tab. That's the one that can
+   read and write files in a folder. Click it.
 
-```bash
-npm install -g @anthropic-ai/claude-code
+That's the whole setup. If you can find the Code tab, you're ready.
+
+---
+
+## Part 2 — Get the files (3 minutes)
+
+1. Go to **<https://github.com/RyanDavis23/spottail-homepage>**
+2. Click the green **Code** button near the top right.
+3. Choose **Download ZIP**.
+4. Find the ZIP in your Downloads, double-click to unzip it, and drag the resulting
+   folder onto your **Desktop**. Rename it to `spottail` to keep things simple.
+
+You now have a folder on your Desktop called `spottail` with the rebuilt homepage inside.
+
+> **Want to see it right now?** Open the `spottail` folder and double-click `index.html`.
+> It opens in your browser. That's the whole website — one file.
+
+---
+
+## Part 3 — Point Claude at the folder
+
+1. In the Claude desktop app, on the **Code** tab, start a new session.
+2. It will ask which folder you want to work in. Choose the `spottail` folder on your Desktop.
+3. Now paste the prompt in Part 4 and hit enter.
+
+---
+
+## Part 4 — The prompt
+
+Copy everything in the grey box below and paste it into Claude as your first message.
+
+```
+I'm the CRO of Spottail Digital, an adtech company and a subsidiary of Cunningham
+Broadcasting Corporation. We sell a single dashboard that local advertisers and
+agencies use to plan, activate, measure, and report across Streaming TV / OTT,
+online video, audio, display, walled gardens, digital out of home, and now social
+and search keywords. Our pitch is "one platform, every channel, simplified and
+localized."
+
+This folder contains a rebuilt homepage at index.html. Please read that file first —
+it defines the design system (colors, fonts, spacing, section patterns) and I want
+everything else on the site to match it exactly.
+
+Please build these three additional pages, each as its own self-contained HTML file
+in this folder, reusing the exact same header, footer, colors, and type:
+
+1. platform.html — the full product story. Expand each of the five capabilities the
+   homepage only summarizes: forecasting, campaign activation, pacing, pixel
+   management, and reporting. Give each one a real section with a diagram or UI mock
+   drawn in code — no stock photos.
+2. about.html — the Cunningham Broadcasting story and the full leadership team.
+3. contact.html — a "build my dashboard" page with the request form, and a clear
+   explanation of what happens after someone submits it.
+
+Rules that matter to me:
+
+- Keep every page a single self-contained HTML file. No build step, no framework,
+  nothing to install. It has to keep working as plain files I can open by
+  double-clicking.
+- Do NOT invent statistics, client names, case studies, testimonials, or pricing.
+  If a page needs a number I haven't given you, put a clearly marked TODO instead of
+  making one up. The only real figures we have are: 20 television stations,
+  18 markets, 20+ years in broadcast, and "hundreds of thousands of audience segments."
+- Every page has to look right on a phone and meet WCAG AA contrast standards.
+- Update the navigation on all pages, including the homepage, so the links point at
+  the real pages instead of placeholder anchors.
+
+Start by reading index.html, then tell me your plan before you write any new files.
+When you're done, show me screenshots of each page at desktop and phone width.
 ```
 
-Download this repo (green **Code** button → **Download ZIP**, then unzip it), open a
-terminal in that folder, and run:
+---
 
-```bash
-claude
+## Part 5 — Good follow-up prompts
+
+Once it's built the first version, this is where the real improvement happens. Just type
+these in plain English — you don't need special syntax.
+
+- `Show me the site and take screenshots of every page on desktop and on a phone.`
+- `The homepage headline is too generic. Give me five alternatives that lead with what a local advertiser actually gets out of this.`
+- `Make the platform page feel less like a brochure and more like a product tour.`
+- `Here are headshots for the leadership team — use these instead of the initials.`
+  (then drag the image files into the chat)
+- `Connect the contact form to a real inbox and walk me through it step by step.`
+- `I don't like the blue on the pricing cards. Show me three other options.`
+- `Check every page for accessibility problems and fix them.`
+
+**The single most useful habit:** when you don't like something, say what bothers you in
+plain words and ask for options rather than one fix. "This section feels cluttered, show
+me three ways to simplify it" gets you much further than "fix this section."
+
+---
+
+## Part 6 — Putting it online so people can see it
+
+When you're happy with it, here's how to get a public link. This is the fiddliest part,
+so the easiest path is simply to **ask Claude to do it for you**:
+
+```
+Publish this site to GitHub Pages under my account and give me the link.
+Walk me through anything you need me to click.
 ```
 
-**Option B — claude.ai in the browser.** Works fine for generating pages, but you'll be
-copying and pasting files by hand. Fine for a quick look, slower for real work.
+If you'd rather do it by hand:
 
-To preview the site locally at any point, run this in the project folder and open
-<http://localhost:4173>:
+1. Make a free account at **<https://github.com>** if you don't have one.
+2. Click the **+** in the top right → **New repository**. Name it `spottail-site`,
+   set it to **Public**, and click **Create repository**.
+3. On the next screen click **uploading an existing file**, then drag in every file from
+   your `spottail` folder. Click **Commit changes**.
+4. Go to the **Settings** tab → **Pages** in the left sidebar.
+5. Under **Source**, choose **Deploy from a branch**, pick `main` and `/ (root)`, and click **Save**.
+6. Wait two or three minutes, then refresh. Your link appears at the top of that page.
 
-```bash
-python3 -m http.server 4173
-```
-
----
-
-## Step 2 — The main prompt
-
-Paste everything between the lines into Claude. It's written to be self-contained —
-you don't need to explain anything else first.
+To point **spottaildigital.com** itself at the new site, that's a DNS change your IT or
+hosting provider handles — worth doing only once you're genuinely happy with it.
 
 ---
 
-> I'm working on the website for **Spottail Digital**, an adtech company and a subsidiary
-> of Cunningham Broadcasting Corporation. We sell a single dashboard that local advertisers
-> and agencies use to plan, activate, measure, and report across Streaming TV / OTT, online
-> video, audio, display, walled gardens, digital out of home, and now social and search
-> keywords. The pitch is "one platform, every channel, simplified and localized."
->
-> This folder already contains a finished homepage at `index.html`. **Read it first.** It
-> defines the whole design system, and I want everything else to match it exactly.
->
-> The design system, for reference:
->
-> - **Colors** (CSS custom properties at the top of `index.html`): deep ink `#070C1E`,
->   navy `#101736`, indigo `#2E3B76`, brand blue `#4DAFE2`, lighter blue `#7FCBF0`,
->   `--brand-ink` `#1F6E9C` for brand-colored text on light backgrounds, warm accent
->   `#F0B775` used sparingly, off-white `#F4F7FB`, body text `#5A6784`.
-> - **Type**: Inter Tight for headings (tight letter-spacing), Inter for body,
->   IBM Plex Mono for the small uppercase eyebrow labels.
-> - **Rhythm**: alternating light and dark full-bleed sections, `1180px` max content
->   width, generous vertical padding, `16px`/`24px` corner radii, soft shadows.
-> - **Motion**: subtle fade-and-rise on scroll via IntersectionObserver, and everything
->   is disabled under `prefers-reduced-motion`.
->
-> **Please build these additional pages, each as its own self-contained HTML file in this
-> folder, reusing the exact same header, footer, colors, type, and section patterns:**
->
-> 1. `platform.html` — the full product story. Expand each of the five capabilities the
->    homepage only summarizes: forecasting, campaign activation, pacing, pixel management,
->    and reporting. One substantial section each, with a purpose-built diagram or UI mock
->    in inline SVG/CSS (no stock photos, no fake screenshots).
-> 2. `about.html` — the Cunningham Broadcasting story and the full leadership team.
-> 3. `contact.html` — a proper "build my dashboard" page with the request form and what
->    happens after someone submits.
->
-> **Rules I care about:**
->
-> - Keep every page a single self-contained HTML file. No build step, no framework, no npm.
->   It has to keep working on GitHub Pages as plain static files.
-> - **Do not invent statistics, client names, case studies, testimonials, or pricing.**
->   If a page needs a number I haven't given you, leave a clearly marked `TODO` instead
->   of making one up. The only hard figures we have are: 20 television stations,
->   18 markets, 20+ years in broadcast, and "hundreds of thousands of audience segments."
-> - Every page must work at 375px wide and pass WCAG AA contrast (4.5:1 for normal text).
-> - Update the nav on every page, including the homepage, so the links point at the real
->   pages instead of `#` anchors.
->
-> Start by reading `index.html`, then tell me your plan before you write any new files.
+## A few honest caveats
 
----
+**The contact form doesn't go anywhere yet.** It checks that the email looks valid and
+then tells the visitor it's a demo — it never pretends to have sent something. Ask Claude
+`connect the contact form to a real inbox` when you want it live.
 
-## Step 3 — Useful follow-up prompts
+**The dashboard graphic on the homepage is illustrative, and the card says so.** Those
+numbers are invented for the demo. If you'd rather show the real product, swap in an
+actual screenshot.
 
-Once the first pass exists, these are the prompts that actually improve it:
+**All the writing came from your current site**, lightly tightened. The leadership bios,
+the four pillars, the five platform tools, and the Cunningham paragraph are yours. One
+typo got fixed along the way: "tailed publisher lists" is now "tailored publisher lists."
 
-- `Show me the site running locally and take a screenshot of each page at desktop and mobile width.`
-- `The hero copy is too generic. Give me five alternative headlines that lead with what a local advertiser actually gets.`
-- `Swap the placeholder team initials for real headshots — here are the image files.`
-- `Connect the contact form to Formspree and walk me through getting the endpoint.`
-- `Run an accessibility pass on every page and fix anything that fails WCAG AA.`
-- `Add a simple Resources section I can drop one-pagers and case studies into later.`
+**Claude will confidently make up a statistic if you let it.** It's excellent at layout,
+structure, and polish. It is not a source of truth about your business. Any number, client
+name, or marketing claim on the finished site should come from you — which is why the
+prompt above explicitly tells it to write TODO instead of guessing.
 
----
-
-## Step 4 — Things worth knowing
-
-**The contact form isn't connected to anything yet.** It validates input and then tells
-the visitor it's a demo. To make it live, open `index.html`, find `FORM_ENDPOINT` near the
-top of the `<script>` block, and paste in an endpoint from [Formspree](https://formspree.io)
-(free tier is fine), HubSpot, or whatever your team already uses. It will then POST the
-form and show a proper success message.
-
-**The dashboard visual in the hero is illustrative, and it says so on the card.** The
-numbers in it are made up for demonstration. If you'd rather show the real product, swap
-it for an actual screenshot — but keep the label honest either way.
-
-**All of the copy came from your current site**, lightly tightened. The leadership bios,
-the four pillars, the five platform capabilities, the key features, and the Cunningham
-paragraph are all yours. I fixed one typo along the way — "tailed publisher lists" is now
-"tailored publisher lists."
-
-**Anything Claude writes is a draft, not a fact.** It's very good at structure, layout, and
-polish, and it will confidently invent a statistic if you let it. Marketing claims, client
-names, and numbers should come from you.
+**Nothing you do here can break the real spottaildigital.com.** You're working on files on
+your own computer. The live site is untouched until somebody deliberately repoints the domain.
